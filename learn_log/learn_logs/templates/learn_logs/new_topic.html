@@ -1,0 +1,20 @@
+{% extends 'learn_logs/base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h2>Add a new topic:</h2>
+{% endblock header %}
+
+{% block content %}
+    <p>Add a new topic:</p>
+
+    <form action="{% url 'learn_logs:new_topic' %}" method="post">
+        {% csrf_token %}
+<!-- Django使用模板标签{% csrf_token %}来防止攻击者利用表单来获得对服务器未经授权的访问。 -->
+        <!-- {{ form.as_p }} -->
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button name="submit">add topic</button>
+        {% endbuttons %}
+    </form>
+{% endblock content %}
